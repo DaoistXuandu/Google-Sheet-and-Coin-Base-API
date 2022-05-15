@@ -8,6 +8,9 @@ from google.oauth2 import service_account
 import json, hmac, hashlib, time, requests
 from requests.auth import AuthBase
 from coinbase.wallet.client import Client
+import threading
+import time
+
 
 def update(data):
         SERVICE_ACCOUNT_FILE = 'keys.json'
@@ -73,5 +76,7 @@ def getData() :
 
 
 if __name__ == '__main__' :
-        update(getData())
-
+        
+        while True :
+              update(getData())
+              time.sleep(10)
